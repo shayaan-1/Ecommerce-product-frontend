@@ -21,6 +21,7 @@ export const authSlice = createSlice({
       } else {
         state.loggedInUser = null;
       }
+      // console.log(state.loggedInUser); //extra check to see if code works
     },
 
     logout: (state) => {

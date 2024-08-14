@@ -1,11 +1,17 @@
 import React from 'react';
 import { Button, Form, Input } from 'antd';
+import { useDispatch } from 'react-redux';
+import {login} from '../../features/authSlice'
+import { useNavigate } from 'react-router';
 
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onFinish = (values) => {
-    console.log('Success:', values);
-    // Handle login logic here
+    // console.log('Success:', values); Extra check
+    dispatch(login(values));
+    navigate('/add');
   };
 
   const onFinishFailed = (errorInfo) => {
