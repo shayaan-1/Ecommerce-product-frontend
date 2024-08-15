@@ -15,7 +15,7 @@ const AddProduct = () => {
       expiryDate: values.expiryDate ? values.expiryDate.toISOString() : null,
     };
     dispatch(createProduct(formattedValues));
-    navigate('/products/1');
+    navigate('/');
   };
 
   // Function to disable past dates
@@ -75,7 +75,7 @@ const AddProduct = () => {
 
       <Form.Item
         label="Product Image URL"
-        name="imageUrl"
+        name="image"
         rules={[{ required: true, message: 'Please input the product image URL!' }]}
       >
         <Input placeholder="Enter product image URL" />

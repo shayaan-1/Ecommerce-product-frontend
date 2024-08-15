@@ -39,7 +39,7 @@ export const productsSlice = createSlice({
                 product.expiryDate = expiryDate ? new Date(expiryDate).toISOString() : null;
                 product.image = image;
             }
-            // console.log(current(product)); // This will print the plain object instead of the proxy
+            console.log(current(product)); // This will print the plain object instead of the proxy
         },
 
         deleteProduct: (state, action) => {

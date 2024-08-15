@@ -1,14 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Button, Space, Avatar } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { deleteProduct } from '../../features/productsSlice.js'; 
 import HeaderComponent from '../Header/header.jsx';
 import { useNavigate } from 'react-router';
 
-
 const ViewProducts = () => {
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
 
@@ -17,8 +16,11 @@ const ViewProducts = () => {
   };
 
   const handleEdit = (id) => {
-     
-    navigate(`/products/${id}`)
+    navigate(`/products/${id}`);
+  };
+
+  const handleAddProduct = () => {
+    navigate('/add'); // Assuming you have a route for adding a new product
   };
 
   const columns = [
@@ -74,10 +76,21 @@ const ViewProducts = () => {
     },
   ];
 
-  return( <>
-     <HeaderComponent/>
-       <Table columns={columns} dataSource={products} rowKey="id" />
-        </> )
+  return (
+    <>
+      <HeaderComponent />
+      <Table columns={columns} dataSource={products} rowKey="id" />
+      <div style={{ marginTop: 16, textAlign: 'right' }}>
+        <Button
+          type="primary"
+          icon={<PlusOutlined />}
+          onClick={handleAddProduct}
+        >
+          Add Product
+        </Button>
+      </div>
+    </>
+  );
 };
 
 export default ViewProducts;

@@ -11,7 +11,7 @@ const LoginPage = () => {
   const onFinish = (values) => {
     // console.log('Success:', values); Extra check
     dispatch(login(values));
-    navigate('/add');
+    navigate('/');
   };
 
   const onFinishFailed = (errorInfo) => {

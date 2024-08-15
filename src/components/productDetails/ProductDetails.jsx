@@ -19,7 +19,7 @@ const ProductDetails = () => {
         price: product.price,
         quantity: product.quantity,
         expiryDate: product.expiryDate ? dayjs(product.expiryDate) : null,
-        imageUrl: product.image || '',
+        image: product.image || '',
       });
     }
   }, [product, form]);
@@ -30,6 +30,7 @@ const ProductDetails = () => {
       ...values,
       expiryDate: values.expiryDate ? values.expiryDate.toISOString() : null,
     };
+    console.log("Format: ",formattedValues);
     dispatch(updateProduct(formattedValues));
     navigate('/');
   };
@@ -105,7 +106,7 @@ const ProductDetails = () => {
 
           <Form.Item
             label="Product Image URL"
-            name="imageUrl"
+            name="image"
             rules={[{ required: true, message: 'Please input the product image URL!' }]}
           >
             <Input placeholder="Enter product image URL" />
