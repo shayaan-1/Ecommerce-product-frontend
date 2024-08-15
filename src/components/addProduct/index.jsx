@@ -1,8 +1,9 @@
 import React from 'react';
-import { Form, Input, InputNumber, DatePicker, Button } from 'antd';
+import { Form, Input, InputNumber, DatePicker } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { createProduct } from '../../features/productsSlice';
+import CustomButton from '../Button';
 import dayjs from 'dayjs'; 
 
 const AddProduct = () => {
@@ -82,9 +83,14 @@ const AddProduct = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-          Add Product
-        </Button>
+      <CustomButton
+        type="primary"
+        iconType="add"
+        htmlType="submit"  // Ensure the button submits the form
+        style={{ backgroundColor: '#52c41a' }} 
+      >
+        Add Product
+      </CustomButton>
       </Form.Item>
     </Form>
   );

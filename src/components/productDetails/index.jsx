@@ -4,12 +4,13 @@ import { useNavigate, useParams } from 'react-router';
 import { updateProduct } from '../../features/productsSlice';
 import dayjs from 'dayjs';
 import { Form, Input, InputNumber, DatePicker, Button, Row, Col } from 'antd';
+import CustomButton from '../Button';
 
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const product = useSelector(state => state.products.products.find(product => product.id == id));
+  const product = useSelector(state => state.products.products.find(product => product.id === Number(id)));
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -30,7 +31,6 @@ const ProductDetails = () => {
       ...values,
       expiryDate: values.expiryDate ? values.expiryDate.toISOString() : null,
     };
-    console.log("Format: ",formattedValues);
     dispatch(updateProduct(formattedValues));
     navigate('/');
   };
@@ -113,9 +113,15 @@ const ProductDetails = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
+            {/* <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
               Update Product
-            </Button>
+            </Button> */}
+            <CustomButton
+            type='primary'
+            htmlType='submit'
+            >
+              Update Product
+            </CustomButton>
           </Form.Item>
         </Form>
       </Col>

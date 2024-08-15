@@ -1,7 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';  
-import { current } from '@reduxjs/toolkit';
-
 
 //converted to ISO String to make it serializable
 const initialState = { 
@@ -25,13 +22,12 @@ export const productsSlice = createSlice({
                 expiryDate: expiryDate ? new Date(expiryDate).toISOString() : null,  
                 image, 
             };
-            console.log(typeof(newProduct.id))
             state.products.push(newProduct);
         },
 
         updateProduct: (state, action) => {
             const { id, name, price, quantity, expiryDate, image } = action.payload;
-            const product = state.products.find(product => product.id == id);
+            const product = state.products.find(product => product.id === Number(id));
             if (product) {
                 product.name = name;
                 product.price = price;
@@ -39,12 +35,11 @@ export const productsSlice = createSlice({
                 product.expiryDate = expiryDate ? new Date(expiryDate).toISOString() : null;
                 product.image = image;
             }
-            console.log(current(product)); // This will print the plain object instead of the proxy
         },
 
         deleteProduct: (state, action) => {
             const { id } = action.payload;
-            state.products = state.products.filter(product => product.id !== id);
+            state.products = state.products.filter(product => product.id !== Number(id));
         }
     }
 });

@@ -3,6 +3,7 @@ import { Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import {login} from '../../features/authSlice'
 import { useNavigate } from 'react-router';
+import CustomButton from '../Button';
 
 
 const LoginPage = () => {
@@ -32,6 +33,7 @@ const LoginPage = () => {
           <Form.Item
             label="Username"
             name="username"
+            
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
             <Input placeholder="Enter your username" />
@@ -46,9 +48,14 @@ const LoginPage = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="w-full">
+            {/* <Button type="primary" htmlType="submit" className="w-full">
               Login
-            </Button>
+            </Button> */}
+            <CustomButton
+              type='primary'
+              htmlType="submit">
+                Login
+            </CustomButton>
           </Form.Item>
         </Form>
       </div>
