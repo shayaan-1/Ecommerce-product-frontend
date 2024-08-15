@@ -3,7 +3,7 @@ import { Form, Input, InputNumber, DatePicker, Button } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { createProduct } from '../../features/productsSlice';
-import dayjs from 'dayjs'; // Import dayjs instead of moment
+import dayjs from 'dayjs'; 
 
 const AddProduct = () => {
   const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const AddProduct = () => {
           style={{ width: '100%' }}
           placeholder="Select expiry date (optional)"
           disabledDate={disablePastDates}
-          format="YYYY-MM-DD" // Ensure date format is consistent
+          format="YYYY-MM-DD" 
         />
       </Form.Item>
 
