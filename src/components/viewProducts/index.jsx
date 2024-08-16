@@ -10,6 +10,9 @@ const { confirm } = Modal;
 const ViewProducts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+
+
   const products = useSelector((state) => state.products.products);
 
   const showDeleteConfirm = (id) => {
