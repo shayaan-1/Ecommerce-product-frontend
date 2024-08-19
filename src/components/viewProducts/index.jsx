@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Space, Avatar, Modal } from 'antd';
-import { deleteProduct } from '../../features/productsSlice.js'; 
+import { fetchProducts, deleteProduct } from '../../features/productsSlice.js'; 
 import { useNavigate } from 'react-router';
 import CustomButton from '../Button/index.jsx';
 
@@ -14,6 +14,14 @@ const ViewProducts = () => {
 
 
   const products = useSelector((state) => state.products.products);
+  const status = useSelector((state) => state.products.status);
+  const error = useSelector((state) => state.products.error);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch]);
 
   const showDeleteConfirm = (id) => {
     confirm({
@@ -52,8 +60,8 @@ const ViewProducts = () => {
     },
     {
       title: 'Product Name',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'title',
+      key: 'title',
     },
     {
       title: 'Price',
@@ -98,6 +106,14 @@ const ViewProducts = () => {
       ),
     },
   ];
+
+  if (status === 'loading') {
+    return <p>Loading products...</p>;
+  }
+
+  if (status === 'failed') {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <>

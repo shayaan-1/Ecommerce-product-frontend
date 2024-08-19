@@ -31,7 +31,7 @@ const AddProduct = () => {
     >
       <Form.Item
         label="Product Name"
-        name="name"
+        name="title"
         rules={[{ required: true, message: 'Please input the product name!' }]}
       >
         <Input placeholder="Enter product name" />

@@ -15,8 +15,9 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (product) {
+      console.log(product); //check
       form.setFieldsValue({
-        name: product.name,
+        title: product.title,
         price: product.price,
         quantity: product.quantity,
         expiryDate: product.expiryDate ? dayjs(product.expiryDate) : null,
@@ -61,7 +62,7 @@ const ProductDetails = () => {
         >
           <Form.Item
             label="Product Name"
-            name="name"
+            name="title"
             rules={[{ required: true, message: 'Please input the product name!' }]}
           >
             <Input placeholder="Enter product name" />
