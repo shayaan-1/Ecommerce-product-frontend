@@ -14,7 +14,7 @@ const CustomButton = ({ type = 'default', iconType, onClick, children, style ,ht
   return (
     <Button
       type={type}
-      htmlType='submit'
+      htmlType={htmlType}
       icon={icons[iconType]}
       onClick={onClick}
       style={style}

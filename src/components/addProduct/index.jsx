@@ -16,6 +16,8 @@ const AddProduct = () => {
       expiryDate: values.expiryDate ? values.expiryDate.toISOString() : null,
     };
     dispatch(createProduct(formattedValues));
+    console.log('hehe');
+    console.log('hehe');
     navigate('/');
   };
 
