@@ -4,7 +4,7 @@ const initialState = {
   users: [
     {id: 1, username: 'user', password: 'user'}
   ],
-  loggedInUser: null,  // This will hold the current logged-in user info
+  loggedInUser: null,  
 };
 
 export const authSlice = createSlice({
